@@ -1,0 +1,14 @@
+/composer.phar
+/doc2rst.phar
+/.phpunit.result.cache
+/docs/d2r-conf.php
+/docs/d2r-order.php
+/docs/d2r-styles.txt
+/docs/make.bat
+/docs/Makefile
+/docs/_build/
+/docs/_static/
+/docs/_templates/
+/logs/
+/.idea/
+/vendor/
