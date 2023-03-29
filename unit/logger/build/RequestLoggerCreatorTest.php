@@ -41,7 +41,7 @@ class RequestLoggerCreatorTest extends TestCase {
         $rlc = new RequestLoggerCreator();
         $logger = $rlc->create($paras);
         assertInstanceOf(LoggerInterface::class, $logger);
-        //$logger->debug("");
+        $logger->debug("");
         $filename = $rlc->getFilename();
         /** @var RotatingFileHandler $handler */
         $handler = $logger->getHandlers()[0];

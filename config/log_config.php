@@ -20,5 +20,15 @@ return [
         "err_level" => \Psr\Log\LogLevel::ERROR,
         "format" => "%level_name% | %datetime% | %message% | %context% %extra%\n",
         "date_format" => "Y-m-d H:i:s",
+    ],
+    "clt" => [
+        "channel" => "clt",
+        "level" => \Psr\Log\LogLevel::DEBUG,
+        "bubble" => false,
+        "white_line" => true,
+        "stack_match" => "/(application|src)\/(bhenk|unit)/i",
+        "date_format" => "H:i:s:u",
+        "exclamation" => "chips!",
+        "color_scheme" => "bhenk\logger\handle\ColorSchemeDark",
     ]
 ];

@@ -142,6 +142,10 @@ class LoggerFactory {
                     $logger = (new DefaultLoggerCreator())->create($paras);
                     self::$loggers[$type->name] = $logger;
                     break;
+                case LoggerTypes::clt:
+                    $logger = (new ConsoleLoggerCreator())->create($paras);
+                    self::$loggers[$type->name] = $logger;
+                    break;
                 default:
                     $logger = self::createDefaultOut();
                     self::$loggers[$type->name] = $logger;

@@ -18,7 +18,7 @@ class DefaultLoggerCreator extends AbstractLoggerCreator {
     /**
      * Default logfile
      */
-    const LOG_FILENAME = "logger" . DIRECTORY_SEPARATOR . "default.log";
+    const LOG_FILENAME = "logger" . DIRECTORY_SEPARATOR . "logger.log";
     /**
      * Default max logfiles to keep around
      */

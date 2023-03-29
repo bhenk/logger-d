@@ -226,10 +226,7 @@ The optional *filename* may be relative to the ancestor log directory.
 
     
 
-   **Creates a logger that implements** `LoggerInterface <https://www.google.com/search?q=LoggerInterface>`_
-   
-   
-   
+   **Creates a logger that implements LoggerInterface**
    
    | :tag6:`param` array :param:`$paras` - array of name-value pairs needed for building the logger.
    | :tag6:`return` `LoggerInterface <https://www.google.com/search?q=LoggerInterface>`_
@@ -328,4 +325,4 @@ A :tagsign:`param` :tech:`$filename` is invalid if it is the empty string ("") o
 
 ----
 
-:block:`Wed, 29 Mar 2023 13:30:51 +0000` 
+:block:`Wed, 29 Mar 2023 19:14:39 +0000` 

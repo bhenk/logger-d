@@ -38,22 +38,22 @@
 
 .. end required roles
 
-.. _bhenk\logger\build\ErrorLoggerCreator:
+.. _bhenk\logger\build\ConsoleLoggerCreator:
 
-ErrorLoggerCreator
-==================
+ConsoleLoggerCreator
+====================
 
 .. table::
    :widths: auto
    :align: left
 
-   ========== =============================================================================================== 
-   namespace  bhenk\\logger\\build                                                                            
-   predicates Cloneable | Instantiable                                                                        
-   implements :ref:`bhenk\logger\build\LoggerCreatorInterface`                                                
-   extends    :ref:`bhenk\logger\build\AbstractLoggerCreator`                                                 
-   hierarchy  :ref:`bhenk\logger\build\ErrorLoggerCreator` -> :ref:`bhenk\logger\build\AbstractLoggerCreator` 
-   ========== =============================================================================================== 
+   ========== ================================================================================================= 
+   namespace  bhenk\\logger\\build                                                                              
+   predicates Cloneable | Instantiable                                                                          
+   implements :ref:`bhenk\logger\build\LoggerCreatorInterface`                                                  
+   extends    :ref:`bhenk\logger\build\AbstractLoggerCreator`                                                   
+   hierarchy  :ref:`bhenk\logger\build\ConsoleLoggerCreator` -> :ref:`bhenk\logger\build\AbstractLoggerCreator` 
+   ========== ================================================================================================= 
 
 
 .. contents::
@@ -62,15 +62,69 @@ ErrorLoggerCreator
 ----
 
 
-.. _bhenk\logger\build\ErrorLoggerCreator::Constants:
+.. _bhenk\logger\build\ConsoleLoggerCreator::Constants:
 
 Constants
 +++++++++
 
 
-.. _bhenk\logger\build\ErrorLoggerCreator::FILENAME:
+.. _bhenk\logger\build\ConsoleLoggerCreator::CHANNEL:
 
-ErrorLoggerCreator::FILENAME
+ConsoleLoggerCreator::CHANNEL
+-----------------------------
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ====== 
+   predicates public 
+   ========== ====== 
+
+
+
+
+
+.. code-block:: php
+
+   string(3) "clt" 
+
+
+
+
+----
+
+
+.. _bhenk\logger\build\ConsoleLoggerCreator::LEVEL:
+
+ConsoleLoggerCreator::LEVEL
+---------------------------
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ====== 
+   predicates public 
+   ========== ====== 
+
+
+
+
+
+.. code-block:: php
+
+   string(5) "debug" 
+
+
+
+
+----
+
+
+.. _bhenk\logger\build\ConsoleLoggerCreator::BUBBLE:
+
+ConsoleLoggerCreator::BUBBLE
 ----------------------------
 
 .. table::
@@ -87,7 +141,7 @@ ErrorLoggerCreator::FILENAME
 
 .. code-block:: php
 
-   string(16) "logger/error.log" 
+   bool(false) 
 
 
 
@@ -95,10 +149,145 @@ ErrorLoggerCreator::FILENAME
 ----
 
 
-.. _bhenk\logger\build\ErrorLoggerCreator::LOG_DIR:
+.. _bhenk\logger\build\ConsoleLoggerCreator::WHITE_LINE:
 
-ErrorLoggerCreator::LOG_DIR
----------------------------
+ConsoleLoggerCreator::WHITE_LINE
+--------------------------------
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ====== 
+   predicates public 
+   ========== ====== 
+
+
+
+
+
+.. code-block:: php
+
+   bool(true) 
+
+
+
+
+----
+
+
+.. _bhenk\logger\build\ConsoleLoggerCreator::STACK_MATCH:
+
+ConsoleLoggerCreator::STACK_MATCH
+---------------------------------
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ====== 
+   predicates public 
+   ========== ====== 
+
+
+
+
+
+.. code-block:: php
+
+   string(8) "/(.*?)/i" 
+
+
+
+
+----
+
+
+.. _bhenk\logger\build\ConsoleLoggerCreator::DATE_FORMAT:
+
+ConsoleLoggerCreator::DATE_FORMAT
+---------------------------------
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ====== 
+   predicates public 
+   ========== ====== 
+
+
+
+
+
+.. code-block:: php
+
+   string(7) "H:i:s:u" 
+
+
+
+
+----
+
+
+.. _bhenk\logger\build\ConsoleLoggerCreator::EXCLAMATION:
+
+ConsoleLoggerCreator::EXCLAMATION
+---------------------------------
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ====== 
+   predicates public 
+   ========== ====== 
+
+
+
+
+
+.. code-block:: php
+
+   string(6) "chips!" 
+
+
+
+
+----
+
+
+.. _bhenk\logger\build\ConsoleLoggerCreator::COLOR_SCHEME:
+
+ConsoleLoggerCreator::COLOR_SCHEME
+----------------------------------
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ====== 
+   predicates public 
+   ========== ====== 
+
+
+
+
+
+.. code-block:: php
+
+   string(35) "bhenk\logger\handle\ColorSchemeDark" 
+
+
+
+
+----
+
+
+.. _bhenk\logger\build\ConsoleLoggerCreator::LOG_DIR:
+
+ConsoleLoggerCreator::LOG_DIR
+-----------------------------
 
 .. table::
    :widths: auto
@@ -126,16 +315,16 @@ ErrorLoggerCreator::LOG_DIR
 ----
 
 
-.. _bhenk\logger\build\ErrorLoggerCreator::Methods:
+.. _bhenk\logger\build\ConsoleLoggerCreator::Methods:
 
 Methods
 +++++++
 
 
-.. _bhenk\logger\build\ErrorLoggerCreator::create:
+.. _bhenk\logger\build\ConsoleLoggerCreator::create:
 
-ErrorLoggerCreator::create
---------------------------
+ConsoleLoggerCreator::create
+----------------------------
 
 .. table::
    :widths: auto
@@ -158,7 +347,7 @@ ErrorLoggerCreator::create
    **Creates a logger that implements LoggerInterface**
    
    | :tag6:`param` array :param:`$paras` - array of name-value pairs needed for building the logger.
-   | :tag6:`return` `LoggerInterface <https://www.google.com/search?q=LoggerInterface>`_
+   | :tag6:`return` `LoggerInterface <https://www.php-fig.org/psr/psr-3/>`_
    
    ``@inheritdoc`` from method :ref:`bhenk\logger\build\LoggerCreatorInterface::create`
 
@@ -169,20 +358,20 @@ ErrorLoggerCreator::create
 
    public function create(
          Parameter #0 [ <optional> array $paras = [] ]
-    ): Logger
+    ): LoggerInterface
 
 
 | :tag6:`param` array :param:`$paras`
-| :tag6:`return` `Logger <https://www.google.com/search?q=Monolog\\Logger>`_
+| :tag6:`return` `LoggerInterface <https://www.php-fig.org/psr/psr-3/>`_
 
 
 ----
 
 
-.. _bhenk\logger\build\ErrorLoggerCreator::makeAbsolute:
+.. _bhenk\logger\build\ConsoleLoggerCreator::makeAbsolute:
 
-ErrorLoggerCreator::makeAbsolute
---------------------------------
+ConsoleLoggerCreator::makeAbsolute
+----------------------------------
 
 .. table::
    :widths: auto

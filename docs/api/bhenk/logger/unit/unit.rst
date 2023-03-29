@@ -38,142 +38,37 @@
 
 .. end required roles
 
-.. _bhenk\logger\build\LoggerTypes:
+.. _bhenk\logger\unit:
 
-LoggerTypes
-===========
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ============================================================== 
-   namespace  bhenk\\logger\\build                                           
-   predicates Final | Enum                                                   
-   implements `UnitEnum <https://www.php.net/manual/en/class.unitenum.php>`_ 
-   ========== ============================================================== 
-
-
-.. contents::
-
-
-----
-
-
-.. _bhenk\logger\build\LoggerTypes::Constants:
-
-Constants
-+++++++++
-
-
-.. _bhenk\logger\build\LoggerTypes::req:
-
-LoggerTypes::req
-----------------
+unit
+====
 
 .. table::
    :widths: auto
    :align: left
 
-   ========== ================== 
-   predicates public | enum case 
-   ========== ================== 
+   ========================== =========================================== 
+   Depends on                 Dependency invoked by                       
+   ========================== =========================================== 
+   :ref:`bhenk\logger\build`  :ref:`bhenk\logger\unit\ConsoleLoggerTrait` 
+   :ref:`bhenk\logger\handle` :ref:`bhenk\logger\unit\ConsoleLoggerTrait` 
+   :ref:`bhenk\logger\log`    :ref:`bhenk\logger\unit\ConsoleLoggerTrait` 
+   ========================== =========================================== 
+
+
+**Influence logging behaviour during testing**
 
 
 
+.. toctree::
+   :maxdepth: 0
+   :titlesonly:
+   :caption: classes
+
+   ConsoleLoggerTrait/ConsoleLoggerTrait
+   LogAttribute/LogAttribute
 
 
-.. code-block:: php
-
-   enum(bhenk\logger\build\LoggerTypes::req) 
-
-
-
-
-----
-
-
-.. _bhenk\logger\build\LoggerTypes::log:
-
-LoggerTypes::log
-----------------
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ================== 
-   predicates public | enum case 
-   ========== ================== 
-
-
-
-
-
-.. code-block:: php
-
-   enum(bhenk\logger\build\LoggerTypes::log) 
-
-
-
-
-----
-
-
-.. _bhenk\logger\build\LoggerTypes::clt:
-
-LoggerTypes::clt
-----------------
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ================== 
-   predicates public | enum case 
-   ========== ================== 
-
-
-
-
-
-.. code-block:: php
-
-   enum(bhenk\logger\build\LoggerTypes::clt) 
-
-
-
-
-----
-
-
-.. _bhenk\logger\build\LoggerTypes::Methods:
-
-Methods
-+++++++
-
-
-.. _bhenk\logger\build\LoggerTypes::cases:
-
-LoggerTypes::cases
-------------------
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ===================================================================== 
-   predicates public | static                                                       
-   implements `UnitEnum::cases <https://www.php.net/manual/en/unitenum.cases.php>`_ 
-   ========== ===================================================================== 
-
-
-.. code-block:: php
-
-   public static function cases(): array
-
-
-| :tag6:`return` array
 
 
 ----

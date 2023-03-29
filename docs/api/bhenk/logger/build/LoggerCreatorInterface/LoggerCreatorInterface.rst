@@ -47,11 +47,11 @@ LoggerCreatorInterface
    :widths: auto
    :align: left
 
-   ===================== ================================================================================================================================================================================================ 
-   namespace             bhenk\\logger\\build                                                                                                                                                                             
-   predicates            Abstract | Interface                                                                                                                                                                             
-   known implementations :ref:`bhenk\logger\build\AbstractLoggerCreator` | :ref:`bhenk\logger\build\DefaultLoggerCreator` | :ref:`bhenk\logger\build\ErrorLoggerCreator` | :ref:`bhenk\logger\build\RequestLoggerCreator` 
-   ===================== ================================================================================================================================================================================================ 
+   ===================== ================================================================================================================================================================================================================================================= 
+   namespace             bhenk\\logger\\build                                                                                                                                                                                                                              
+   predicates            Abstract | Interface                                                                                                                                                                                                                              
+   known implementations :ref:`bhenk\logger\build\AbstractLoggerCreator` | :ref:`bhenk\logger\build\ConsoleLoggerCreator` | :ref:`bhenk\logger\build\DefaultLoggerCreator` | :ref:`bhenk\logger\build\ErrorLoggerCreator` | :ref:`bhenk\logger\build\RequestLoggerCreator` 
+   ===================== ================================================================================================================================================================================================================================================= 
 
 
 **Defines an interface for classes that are capable of creating loggers**
@@ -123,10 +123,7 @@ LoggerCreatorInterface::create
    ========== ================= 
 
 
-**Creates a logger that implements** `LoggerInterface <https://www.php-fig.org/psr/psr-3/>`_
-
-
-
+**Creates a logger that implements LoggerInterface**
 
 
 .. code-block:: php
@@ -142,4 +139,4 @@ LoggerCreatorInterface::create
 
 ----
 
-:block:`Wed, 29 Mar 2023 13:30:51 +0000` 
+:block:`Wed, 29 Mar 2023 19:14:39 +0000` 

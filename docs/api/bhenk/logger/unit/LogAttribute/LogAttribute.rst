@@ -38,20 +38,29 @@
 
 .. end required roles
 
-.. _bhenk\logger\build\LoggerTypes:
+.. _bhenk\logger\unit\LogAttribute:
 
-LoggerTypes
-===========
+LogAttribute
+============
 
 .. table::
    :widths: auto
    :align: left
 
-   ========== ============================================================== 
-   namespace  bhenk\\logger\\build                                           
-   predicates Final | Enum                                                   
-   implements `UnitEnum <https://www.php.net/manual/en/class.unitenum.php>`_ 
-   ========== ============================================================== 
+   ========== ======================== 
+   namespace  bhenk\\logger\\unit      
+   predicates Cloneable | Instantiable 
+   ========== ======================== 
+
+
+**Attribute to influence logging behavior**
+
+
+
+
+
+| :tag4:`link` `Attribute::TARGET_CLASS <https://www.php.net/manual/en/class.attribute.php>`_
+| :tag4:`link` `Attribute::TARGET_METHOD <https://www.php.net/manual/en/class.attribute.php>`_
 
 
 .. contents::
@@ -60,24 +69,27 @@ LoggerTypes
 ----
 
 
-.. _bhenk\logger\build\LoggerTypes::Constants:
+.. _bhenk\logger\unit\LogAttribute::Constructor:
 
-Constants
-+++++++++
+Constructor
++++++++++++
 
 
-.. _bhenk\logger\build\LoggerTypes::req:
+.. _bhenk\logger\unit\LogAttribute::__construct:
 
-LoggerTypes::req
-----------------
+LogAttribute::__construct
+-------------------------
 
 .. table::
    :widths: auto
    :align: left
 
-   ========== ================== 
-   predicates public | enum case 
-   ========== ================== 
+   ========== ==================== 
+   predicates public | constructor 
+   ========== ==================== 
+
+
+**Constructs a** :ref:`bhenk\logger\unit\LogAttribute`
 
 
 
@@ -85,95 +97,14 @@ LoggerTypes::req
 
 .. code-block:: php
 
-   enum(bhenk\logger\build\LoggerTypes::req) 
+   public function __construct(
+         Parameter #0 [ <optional> bool $on = true ]
+         Parameter #1 [ <optional> Monolog\Level $level = \Monolog\Level::Debug ]
+    )
 
 
-
-
-----
-
-
-.. _bhenk\logger\build\LoggerTypes::log:
-
-LoggerTypes::log
-----------------
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ================== 
-   predicates public | enum case 
-   ========== ================== 
-
-
-
-
-
-.. code-block:: php
-
-   enum(bhenk\logger\build\LoggerTypes::log) 
-
-
-
-
-----
-
-
-.. _bhenk\logger\build\LoggerTypes::clt:
-
-LoggerTypes::clt
-----------------
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ================== 
-   predicates public | enum case 
-   ========== ================== 
-
-
-
-
-
-.. code-block:: php
-
-   enum(bhenk\logger\build\LoggerTypes::clt) 
-
-
-
-
-----
-
-
-.. _bhenk\logger\build\LoggerTypes::Methods:
-
-Methods
-+++++++
-
-
-.. _bhenk\logger\build\LoggerTypes::cases:
-
-LoggerTypes::cases
-------------------
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ===================================================================== 
-   predicates public | static                                                       
-   implements `UnitEnum::cases <https://www.php.net/manual/en/unitenum.cases.php>`_ 
-   ========== ===================================================================== 
-
-
-.. code-block:: php
-
-   public static function cases(): array
-
-
-| :tag6:`return` array
+| :tag5:`param` bool :param:`$on` - set attribute on or off. Default true.
+| :tag5:`param` `Level <https://www.google.com/search?q=Monolog\\Level>`_ :param:`$level` - set the level of log output. Default `Level::Debug <https://www.google.com/search?q=Monolog\\Level::Debug>`_.
 
 
 ----

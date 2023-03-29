@@ -18,7 +18,7 @@ interface LoggerCreatorInterface {
     const LOG_DIR = "logs";
 
     /**
-     * Creates a logger that implements {@link LoggerInterface}.
+     * Creates a logger that implements LoggerInterface
      *
      * @param array $paras array of name-value pairs needed for building the logger.
      * @return LoggerInterface

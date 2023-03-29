@@ -43,6 +43,19 @@
 build
 =====
 
+.. table::
+   :widths: auto
+   :align: left
+
+   ========================== ============================================== 
+   Depends on                 Dependency invoked by                          
+   ========================== ============================================== 
+   :ref:`bhenk\logger\handle` :ref:`bhenk\logger\build\ConsoleLoggerCreator` 
+   ========================== ============================================== 
+
+
+**Build Loggers**
+
 
 
 .. toctree::
@@ -51,6 +64,7 @@ build
    :caption: classes
 
    AbstractLoggerCreator/AbstractLoggerCreator
+   ConsoleLoggerCreator/ConsoleLoggerCreator
    DefaultLoggerCreator/DefaultLoggerCreator
    ErrorLoggerCreator/ErrorLoggerCreator
    LoggerCreatorInterface/LoggerCreatorInterface
@@ -63,4 +77,4 @@ build
 
 ----
 
-:block:`Wed, 29 Mar 2023 13:30:51 +0000` 
+:block:`Wed, 29 Mar 2023 19:14:39 +0000` 

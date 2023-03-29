@@ -7,4 +7,5 @@ enum LoggerTypes {
 
     case req;
     case log;
+    case clt;
 }
