@@ -8,7 +8,6 @@ use Monolog\Handler\RotatingFileHandler;
 use Monolog\Level;
 use Monolog\Logger;
 use Monolog\Processor\WebProcessor;
-use RuntimeException;
 
 /**
  * Class capable of creating a request logger.

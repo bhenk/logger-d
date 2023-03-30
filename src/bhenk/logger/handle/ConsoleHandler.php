@@ -11,7 +11,6 @@ use function debug_backtrace;
 use function get_class;
 use function is_null;
 use function preg_match;
-use function print_r;
 use function str_pad;
 use function strrpos;
 use function strtoupper;
@@ -23,8 +22,8 @@ use function substr;
  */
 class ConsoleHandler extends AbstractHandler {
 
+    private static int $count = 0;
     private ColorSchemeInterface $scheme;
-    private int $count = 0;
 
     /**
      * Outputs log statements to console.
@@ -80,13 +79,22 @@ class ConsoleHandler extends AbstractHandler {
     }
 
     /**
+     * Reset the log statement counter
+     *
+     * @return void
+     */
+    public function resetCount(): void {
+        self::$count = 0;
+    }
+
+    /**
      * @inheritDoc
      */
     public function handle(LogRecord $record): bool {
         if (!$this->isHandling($record)) return $this->getBubble();
         $c = $this->color_scheme;
 
-        $this->count += 1;
+        self::$count += 1;
         $level = strtoupper($record->level->toPsrLogLevel());
         $level_color = constant("$c::" . $level);
         $level = str_pad($level, 9);
@@ -111,7 +119,7 @@ class ConsoleHandler extends AbstractHandler {
 
         fwrite(STDOUT, $c::RESET);
         if ($this->white_line) fwrite(STDOUT, $c::NL);
-        fwrite(STDOUT, "$this->count ");
+        fwrite(STDOUT, self::$count . " ");
         fwrite(STDOUT, $row);
         fwrite(STDOUT, $click);
 

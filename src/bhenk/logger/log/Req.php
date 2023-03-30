@@ -9,7 +9,7 @@ use bhenk\logger\build\LoggerTypes;
  *
  * The type of *Logger* used by this log agent defaults to "req".
  *
- * Documentation of logging calls copied from
+ * Documentation of logging calls copied from https://www.php-fig.org/psr/psr-3/.
  *
  */
 class Req extends Log {

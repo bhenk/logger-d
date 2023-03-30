@@ -116,6 +116,13 @@ If so, this trait will use the :ref:`bhenk\logger\handle\ColorSchemeInterface` s
 Otherwise, a RuntimeException will be thrown with the message that you messed up the code.
 
 
+
+
+.. admonition::  see also
+
+    :ref:`bhenk\logger\build\ConsoleLoggerCreator`
+
+
 .. contents::
 
 
@@ -142,6 +149,13 @@ ConsoleLoggerTrait::CONSOLE_LOGGER
    ========== ====== 
 
 
+
+
+**The logger type used**
+
+
+Logger types are obtained from :ref:`bhenk\logger\build\LoggerFactory`. In this case the Logger obtained is equipped
+with a :ref:`bhenk\logger\handle\ConsoleHandler`.
 
 
 
@@ -175,6 +189,15 @@ ConsoleLoggerTrait::setUpBeforeClass
    ========== =============== 
 
 
+**Sets up before the** `TestCase <https://www.google.com/search?q=PHPUnit\\Framework\\TestCase>`_ **starts running**
+
+
+
+If :ref:`bhenk\logger\unit\LogAttribute` on class level is absent or
+enabled, will print a line to console with the name of the TestCase.
+Will call on :tech:`parent::setUpBeforeClass()` after this.
+
+
 .. code-block:: php
 
    public static function setUpBeforeClass(): void
@@ -198,6 +221,16 @@ ConsoleLoggerTrait::tearDownAfterClass
    ========== =============== 
    predicates public | static 
    ========== =============== 
+
+
+**Tears down after the** `TestCase <https://www.google.com/search?q=PHPUnit\\Framework\\TestCase>`_ **has run**
+
+
+
+If :ref:`bhenk\logger\unit\LogAttribute` on class level is absent or enabled,
+will print a farewell message to console as demarcation of the TestCase. Will call on
+:tech:`parent::tearDownAfterClass()` after this.
+
 
 
 .. code-block:: php
@@ -225,6 +258,12 @@ ConsoleLoggerTrait::setUp
    ========== ====== 
 
 
+**Set up before an individual test method starts running**
+
+
+
+If :ref:`bhenk\logger\unit\LogAttribute` on method level is absent or enabled, will print the name of the method to console.
+Will call on :tech:`parent::setUp()` after this.
 
 
 
@@ -254,6 +293,13 @@ ConsoleLoggerTrait::tearDown
    ========== ====== 
 
 
+**Resets the Logger type**
+
+
+Will reset the :ref:`bhenk\logger\build\ConsoleLoggerCreator` to its original :ref:`LoggerType <bhenk\logger\build\LoggerTypes>`.
+Calls :tech:`parent::tearDown()` after this.
+
+
 .. code-block:: php
 
    public function tearDown(): void
@@ -264,4 +310,4 @@ ConsoleLoggerTrait::tearDown
 
 ----
 
-:block:`Wed, 29 Mar 2023 19:14:39 +0000` 
+:block:`Thu, 30 Mar 2023 20:36:52 +0000` 

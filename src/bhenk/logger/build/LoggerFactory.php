@@ -14,6 +14,53 @@ use function is_file;
 
 /**
  * Static class to create and stock Loggers
+ *
+ * This class delegates the creation of loggers (implementing {@link LoggerInterface}) to
+ * {@link LoggerCreatorInterface LoggerCreators} that will take an array of parameters as build specification.
+ * Parameters can be expressed in a configuration file:
+ * ```
+ * {ancestor directory}/config/log_config.php
+ * ```
+ * This class will look for the directory *config* as a child of an ancestor directory.
+ *
+ * Example of a logger configuration file:
+ * ```
+ * <?php
+ *
+ * return [
+ *     "req" => [
+ *         "channel" => "req",
+ *         "filename" => "unit/req.log",
+ *         "level" => \Psr\Log\LogLevel::DEBUG,
+ *         "max_files" => 2,
+ *         "filename_format" => "{filename}-{date}",
+ *         "filename_date_format" => "Y-m",
+ *         "line_format" => "%datetime% %extra%\n",
+ *     ],
+ *     "log" => [
+ *         "channel" => "log",
+ *         "log_file" => "unit/logger.log",
+ *         "log_max_files" => 5,
+ *         "log_level" => \Psr\Log\LogLevel::INFO,
+ *         "err_file" => "unit/error.log",
+ *         "err_max_files" => 5,
+ *         "err_level" => \Psr\Log\LogLevel::ERROR,
+ *         "format" => "%level_name% | %datetime% | %message% | %context% %extra%\n",
+ *         "date_format" => "Y-m-d H:i:s",
+ *     ],
+ *     "clt" => [
+ *         "channel" => "clt",
+ *         "level" => \Psr\Log\LogLevel::DEBUG,
+ *         "bubble" => false,
+ *         "white_line" => true,
+ *         "stack_match" => "/(application|src)\/(bhenk|unit)/i",
+ *         "date_format" => "H:i:s:u",
+ *         "exclamation" => "chips!",
+ *         "color_scheme" => "bhenk\logger\handle\ColorSchemeDark",
+ *     ]
+ * ];
+ * ```
+ * All parameters are optional.
  */
 class LoggerFactory {
 
@@ -46,18 +93,24 @@ class LoggerFactory {
      *
      * Loads logger definitions from the configuration file.
      *
-     * @param bool|string $config_file
+     * @param string $config_file
      */
-    public static function setConfigFile(bool|string $config_file): void {
+    public static function setConfigFile(string $config_file): void {
         self::$config_file = $config_file;
         self::loadDefinitions();
     }
 
     /**
-     * Get the logger of the given type
+     * Get the Logger of the given type
      *
-     * @param LoggerTypes $type
-     * @return LoggerInterface
+     * Will get the Logger from stock or tries to create the specified Logger. If anything goes wrong during
+     * creation will output an error message to
+     * ```
+     * {ancestor directory}/logs/logger/factory_error.log
+     * ```
+     *
+     * @param LoggerTypes $type type of Logger
+     * @return LoggerInterface Logger as specified
      */
     public static function getLogger(LoggerTypes $type): LoggerInterface {
         if (!in_array($type->name, self::$loggers)) {

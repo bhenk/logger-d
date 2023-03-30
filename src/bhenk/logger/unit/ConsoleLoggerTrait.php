@@ -2,20 +2,20 @@
 
 namespace bhenk\logger\unit;
 
+use bhenk\logger\build\ConsoleLoggerCreator;
 use bhenk\logger\build\LoggerFactory;
 use bhenk\logger\build\LoggerTypes;
 use bhenk\logger\handle\ColorSchemeInterface;
 use bhenk\logger\handle\ConsoleHandler;
 use bhenk\logger\log\Log;
 use Monolog\Level;
+use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionException;
 use RuntimeException;
 use function fwrite;
 use function method_exists;
-use function print_r;
 use function str_pad;
-use function var_dump;
 
 /**
  * Trait capable of redirecting log output to console.
@@ -77,9 +77,17 @@ use function var_dump;
  * Skies look bright if the logger of this type has the handler :ref:`bhenk\logger\handle\ConsoleHandler`.
  * If so, this trait will use the :ref:`bhenk\logger\handle\ColorSchemeInterface` set on this handler.
  * Otherwise, a RuntimeException will be thrown with the message that you messed up the code.
+ *
+ * @see ConsoleLoggerCreator
  */
 trait ConsoleLoggerTrait {
 
+    /**
+     * The logger type used
+     *
+     * Logger types are obtained from {@link LoggerFactory}. In this case the Logger obtained is equipped
+     * with a {@link ConsoleHandler}.
+     */
     const CONSOLE_LOGGER = LoggerTypes::clt;
     private static ColorSchemeInterface $cs;
     private static ReflectionClass $reflectionClass;
@@ -89,6 +97,14 @@ trait ConsoleLoggerTrait {
     private Level $method_level = Level::Debug;
     private LoggerTypes $previous_type;
 
+    /**
+     * Sets up before the {@link PHPUnit\Framework\TestCase} starts running.
+     *
+     * If {@link LogAttribute} on class level is absent or
+     * enabled, will print a line to console with the name of the TestCase.
+     * Will call on :tech:`parent::setUpBeforeClass()` after this.
+     * @return void
+     */
     public static function setUpBeforeClass(): void {
         self::$reflectionClass = new ReflectionClass(static::class);
         $attr_class = self::$reflectionClass->getAttributes(LogAttribute::class);
@@ -103,6 +119,7 @@ trait ConsoleLoggerTrait {
                 /** @var ConsoleHandler $handler */
                 $handler = $logger->getHandlers()[0];
                 self::$cs = $handler->getColorScheme();
+                $handler->resetCount();
             } else {
                 // unreachable code
                 throw new RuntimeException("Code mess: expected " . ConsoleHandler::class);
@@ -117,23 +134,44 @@ trait ConsoleLoggerTrait {
         parent::setUpBeforeClass();
     }
 
+    /**
+     * Tears down after the {@link PHPUnit\Framework\TestCase} has run.
+     *
+     * If {@link LogAttribute} on class level is absent or enabled,
+     * will print a farewell message to console as demarcation of the TestCase. Will call on
+     * :tech:`parent::tearDownAfterClass()` after this.
+     *
+     * @return void
+     */
     public static function tearDownAfterClass(): void {
         if (self::$class_on) {
             fwrite(STDOUT, self::$cs::RESET
                 . self::$cs::TRAIT_GOODBYE
                 . "goodbye " . static::class
                 . self::$cs::RESET
-                . PHP_EOL);
+                . PHP_EOL . PHP_EOL);
         }
         parent::tearDownAfterClass();
     }
 
     /**
+     * Set up before an individual test method starts running.
+     *
+     * If {@link LogAttribute} on method level is absent or enabled, will print the name of the method to console.
+     * Will call on :tech:`parent::setUp()` after this.
+     *
      * @throws ReflectionException
      */
     public function setUp(): void {
         if (self::$class_on) {
-            $reflection_method = self::$reflectionClass->getMethod(parent::name());
+            if (method_exists(TestCase::class, "name")) {
+                $methodName = parent::name();
+            } elseif (method_exists(TestCase::class, "getName")) {
+                $methodName = parent::getName();
+            } else {
+                $methodName = $this->name();
+            }
+            $reflection_method = self::$reflectionClass->getMethod($methodName);
             $attr_method = $reflection_method->getAttributes(LogAttribute::class);
             if (!empty($attr_method)) {
                 $args = $attr_method[0]->getArguments();
@@ -143,9 +181,9 @@ trait ConsoleLoggerTrait {
             if ($this->method_on) {
                 $this->previous_type = Log::setType(self::CONSOLE_LOGGER);
                 Log::setLevel($this->method_level);
-                fwrite(STDOUT, self::$cs::RESET
+                fwrite(STDOUT, self::$cs::RESET . PHP_EOL
                     . self::$cs::TRAIT_METHOD
-                    . str_pad(parent::name(), 120, "-")
+                    . str_pad($methodName, 120, "-")
                     . self::$cs::END
                     . PHP_EOL);
             }
@@ -153,6 +191,13 @@ trait ConsoleLoggerTrait {
         parent::setUp();
     }
 
+    /**
+     * Resets the Logger type
+     *
+     * Will reset the {@link Log} to its original {@link LoggerTypes LoggerType}.
+     * Calls :tech:`parent::tearDown()` after this.
+     * @return void
+     */
     public function tearDown(): void {
         if (self::$class_on and $this->method_on) {
             Log::setType($this->previous_type);

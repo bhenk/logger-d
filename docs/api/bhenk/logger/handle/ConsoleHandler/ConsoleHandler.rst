@@ -170,6 +170,34 @@ ConsoleHandler::getColorScheme
 ----
 
 
+.. _bhenk\logger\handle\ConsoleHandler::resetCount:
+
+ConsoleHandler::resetCount
+--------------------------
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ====== 
+   predicates public 
+   ========== ====== 
+
+
+**Reset the log statement counter**
+
+
+.. code-block:: php
+
+   public function resetCount(): void
+
+
+| :tag6:`return` void
+
+
+----
+
+
 .. _bhenk\logger\handle\ConsoleHandler::handle:
 
 ConsoleHandler::handle
@@ -607,4 +635,4 @@ ConsoleHandler::__sleep
 
 ----
 
-:block:`Wed, 29 Mar 2023 19:14:39 +0000` 
+:block:`Thu, 30 Mar 2023 20:36:52 +0000` 

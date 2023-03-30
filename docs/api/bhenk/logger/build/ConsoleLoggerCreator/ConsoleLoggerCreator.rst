@@ -56,6 +56,26 @@ ConsoleLoggerCreator
    ========== ================================================================================================= 
 
 
+**Class capable of creating a Logger that outputs to console**
+
+
+The `Logger <https://www.google.com/search?q=Monolog\\Logger>`_ created is equipped with a :ref:`bhenk\logger\handle\ConsoleHandler` that is optimized for logging
+to console during test runs.
+
+
+
+
+.. admonition::  see also
+
+    :ref:`bhenk\logger\handle\ConsoleHandler`
+
+
+
+.. admonition::  see also
+
+    :ref:`bhenk\logger\unit\ConsoleLoggerTrait`
+
+
 .. contents::
 
 
@@ -82,6 +102,9 @@ ConsoleLoggerCreator::CHANNEL
    ========== ====== 
 
 
+
+
+**Default channel**
 
 
 
@@ -111,6 +134,9 @@ ConsoleLoggerCreator::LEVEL
 
 
 
+**Default LogLevel**
+
+
 
 .. code-block:: php
 
@@ -136,6 +162,9 @@ ConsoleLoggerCreator::BUBBLE
    ========== ====== 
 
 
+
+
+**By default, does not bubble**
 
 
 
@@ -165,6 +194,9 @@ ConsoleLoggerCreator::WHITE_LINE
 
 
 
+**Induce a white line before each log statement**
+
+
 
 .. code-block:: php
 
@@ -190,6 +222,9 @@ ConsoleLoggerCreator::STACK_MATCH
    ========== ====== 
 
 
+
+
+**Regular expression used to filter lines in error traces**
 
 
 
@@ -219,6 +254,9 @@ ConsoleLoggerCreator::DATE_FORMAT
 
 
 
+**Date format for log statements**
+
+
 
 .. code-block:: php
 
@@ -246,6 +284,9 @@ ConsoleLoggerCreator::EXCLAMATION
 
 
 
+**Exclamation on encountering an error**
+
+
 
 .. code-block:: php
 
@@ -271,6 +312,9 @@ ConsoleLoggerCreator::COLOR_SCHEME
    ========== ====== 
 
 
+
+
+**ColorScheme used by ConsoleHandler**
 
 
 
@@ -336,6 +380,28 @@ ConsoleLoggerCreator::create
    ========== ======================================================== 
 
 
+**Creates a Logger that outputs to console**
+
+
+The logger created has a :ref:`bhenk\logger\handle\ConsoleHandler` that outputs log statements to console
+
+Optional :tagsign:`param` :tech:`$paras` set behaviour of ConsoleHandler and have the following format:
+
+..  code-block::
+
+       "clt" => [
+           "channel" => {string},
+           "level" => {string|int|Monolog\Level|\Psr\Log\LogLevel},
+           "bubble" => {bool},
+           "white_line" => {bool},
+           "stack_match" => {regex},
+           "date_format" => {date format},  // "H:i:s:u"
+           "exclamation" => {string},
+           "color_scheme" => {string},      // bhenk\logger\handle\ColorSchemeInterface
+       ]
+
+
+:tagsign:`param` :tech:`$paras` can be incorporated in :ref:`bhenk\logger\build\LoggerFactory::LOG_CONFIG_FILE`.
 
 
 
@@ -347,7 +413,7 @@ ConsoleLoggerCreator::create
    **Creates a logger that implements LoggerInterface**
    
    | :tag6:`param` array :param:`$paras` - array of name-value pairs needed for building the logger.
-   | :tag6:`return` `LoggerInterface <https://www.php-fig.org/psr/psr-3/>`_
+   | :tag6:`return` `LoggerInterface <https://www.google.com/search?q=LoggerInterface>`_
    
    ``@inheritdoc`` from method :ref:`bhenk\logger\build\LoggerCreatorInterface::create`
 
@@ -358,11 +424,11 @@ ConsoleLoggerCreator::create
 
    public function create(
          Parameter #0 [ <optional> array $paras = [] ]
-    ): LoggerInterface
+    ): Logger
 
 
-| :tag6:`param` array :param:`$paras`
-| :tag6:`return` `LoggerInterface <https://www.php-fig.org/psr/psr-3/>`_
+| :tag6:`param` array :param:`$paras` - see above
+| :tag6:`return` `Logger <https://www.google.com/search?q=Monolog\\Logger>`_  - `Logger <https://www.google.com/search?q=Monolog\\Logger>`_ with a :ref:`bhenk\logger\handle\ConsoleHandler`
 
 
 ----
@@ -409,4 +475,4 @@ A :tagsign:`param` :tech:`$filename` is invalid if it is the empty string ("") o
 
 ----
 
-:block:`Wed, 29 Mar 2023 19:14:39 +0000` 
+:block:`Thu, 30 Mar 2023 20:36:52 +0000` 

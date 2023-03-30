@@ -61,7 +61,7 @@ Req
 
 The type of *Logger* used by this log agent defaults to "req".
 
-Documentation of logging calls copied from
+Documentation of logging calls copied from https://www.php-fig.org/psr/psr-3/.
 
 
 
@@ -563,4 +563,4 @@ Req::log
 
 ----
 
-:block:`Wed, 29 Mar 2023 19:14:39 +0000` 
+:block:`Thu, 30 Mar 2023 20:36:52 +0000` 

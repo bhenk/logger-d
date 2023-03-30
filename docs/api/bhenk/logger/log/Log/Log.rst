@@ -58,9 +58,10 @@ Log
 
 
 
-The type of *Logger* used by this log agent defaults to "log".
+The type of *Logger* used by this log agent defaults to "log" and has a two logfiles, one for all statements.
+Log messages exceeding a certain level will also be logged to an error logfile.
 
-Documentation of logging calls copied from X.
+Documentation of logging calls copied from https://www.php-fig.org/psr/psr-3/.
 
 
 
@@ -515,4 +516,4 @@ Log::log
 
 ----
 
-:block:`Wed, 29 Mar 2023 19:14:39 +0000` 
+:block:`Thu, 30 Mar 2023 20:36:52 +0000` 

@@ -10,6 +10,10 @@ bhenk/logger
    :maxdepth: 2
    :caption: Contents:
 
+   rst/about
+   rst/install
+   rst/configuration
+   rst/logging
    api/api-docs
 
 Indices and tables

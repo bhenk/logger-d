@@ -14,7 +14,7 @@ class DummyClassTest extends TestCase {
     public function testLogs() {
         include __DIR__ . DIRECTORY_SEPARATOR . "DummyClass.php";
         $dummy = new DummyClass();
-        $dummy->logInfoStatements("foo, bar", "this is a test statement");
+        $dummy->logInfoStatements("foo, bar", "this is a test statement", "Another message");
         self::assertEquals(1, 1);
     }
 
