@@ -8,7 +8,6 @@
 /docs/Makefile
 /docs/_build/
 /docs/_static/
-/docs/_templates/
 /logs/
 /.idea/
 /vendor/

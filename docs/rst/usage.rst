@@ -68,7 +68,7 @@ at an *if* statement? Has this or that variable the right value at a precise mom
 for your logger at those places, but chances are you drown in log statements by the time your code base has grown
 sufficiently large. Wouldn't it be great to see exactly those log statements on your console,
 of that part of your codebase that is under test, with the chosen severity level? A Trait and an Attribute in
-the package *bhenk\logger\unit* allows you to precisely do that.
+the package *bhenk\\logger\\unit* allows you to precisely do that.
 
 The :ref:`bhenk\logger\unit\ConsoleLoggerTrait` use the
 `PHPUnit fixtures <https://docs.phpunit.de/en/10.0/fixtures.html#fixtures>`_ ``setUp``, ``tearDown``,

@@ -402,7 +402,7 @@ LoggerFactory::setQuiet
    ========== =============== 
 
 
-**Sets whether the factory will output error messages to** *STDOUT* **when creating loggers**
+**Sets whether the factory will output error messages to** *STDERR* **when creating loggers**
 
 
 .. code-block:: php
@@ -418,4 +418,4 @@ LoggerFactory::setQuiet
 
 ----
 
-:block:`Fri, 31 Mar 2023 09:31:35 +0000` 
+:block:`Fri, 31 Mar 2023 11:09:19 +0000` 

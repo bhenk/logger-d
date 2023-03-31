@@ -14,8 +14,3 @@ bhenk/logger
    rst/usage
    api/api-docs
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
