@@ -20,7 +20,9 @@ at an *if* statement? Has this or that variable the right value at a precise mom
 for your logger at those places, but chances are you drown in log statements by the time your code base has grown
 sufficiently large. Wouldn't it be great to see exactly those log statements on your console,
 of that part of your codebase that is under test, with the chosen severity level? A Trait and an Attribute in
-the package *bhenk\logger\unit* allows you to precisely do that.
+the package *bhenk\logger\unit* allows you to precisely do that, without
+touching the code under test. Trait and Attribute are applied on
+the TestCase and/or test method.
 
 Here are screenshots of the output to console of normal log messages, that would otherwise be drowned in a
 mess of statements in your logfiles.
