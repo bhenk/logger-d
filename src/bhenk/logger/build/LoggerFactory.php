@@ -149,7 +149,7 @@ class LoggerFactory {
     }
 
     /**
-     * Sets whether the factory will output error messages to *STDOUT* when creating loggers
+     * Sets whether the factory will output error messages to *STDERR* when creating loggers
      *
      * @param bool $quiet
      */

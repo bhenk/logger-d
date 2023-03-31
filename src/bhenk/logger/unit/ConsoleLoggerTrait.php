@@ -13,6 +13,7 @@ use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionException;
 use RuntimeException;
+use Symfony\Component\Console\Logger\ConsoleLogger;
 use function fwrite;
 use function method_exists;
 use function str_pad;
@@ -73,7 +74,7 @@ use function str_pad;
  * on class level.
  *
  * This trait calls on :ref:`bhenk\logger\log\Log` to set the type of logger temporarily to
- * {@link LoggerTypes::clt}
+ * {@link LoggerTypes::clt}.
  * Skies look bright if the logger of this type has the handler :ref:`bhenk\logger\handle\ConsoleHandler`.
  * If so, this trait will use the :ref:`bhenk\logger\handle\ColorSchemeInterface` set on this handler.
  * Otherwise, a RuntimeException will be thrown with the message that you messed up the code.
@@ -158,6 +159,7 @@ trait ConsoleLoggerTrait {
      * Set up before an individual test method starts running.
      *
      * If {@link LogAttribute} on method level is absent or enabled, will print the name of the method to console.
+     * Sets the {@link ConsoleLoggerTrait::CONSOLE_LOGGER} as type on {@link bhenk\logger\log\Log}.
      * Will call on :tech:`parent::setUp()` after this.
      *
      * @throws ReflectionException
@@ -194,7 +196,7 @@ trait ConsoleLoggerTrait {
     /**
      * Resets the Logger type
      *
-     * Will reset the {@link Log} to its original {@link LoggerTypes LoggerType}.
+     * Will reset the {@link bhenk\logger\log\Log} to its original {@link LoggerTypes LoggerType}.
      * Calls :tech:`parent::tearDown()` after this.
      * @return void
      */

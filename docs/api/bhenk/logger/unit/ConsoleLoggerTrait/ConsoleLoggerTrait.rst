@@ -110,7 +110,7 @@ methods has precedence over that set
 on class level.
 
 This trait calls on :ref:`bhenk\logger\log\Log` to set the type of logger temporarily to
-:ref:`bhenk\logger\build\LoggerTypes::clt`
+:ref:`bhenk\logger\build\LoggerTypes::clt`.
 Skies look bright if the logger of this type has the handler :ref:`bhenk\logger\handle\ConsoleHandler`.
 If so, this trait will use the :ref:`bhenk\logger\handle\ColorSchemeInterface` set on this handler.
 Otherwise, a RuntimeException will be thrown with the message that you messed up the code.
@@ -263,6 +263,7 @@ ConsoleLoggerTrait::setUp
 
 
 If :ref:`bhenk\logger\unit\LogAttribute` on method level is absent or enabled, will print the name of the method to console.
+Sets the :ref:`bhenk\logger\unit\ConsoleLoggerTrait::CONSOLE_LOGGER` as type on :ref:`bhenk\logger\log\Log`.
 Will call on :tech:`parent::setUp()` after this.
 
 
@@ -296,7 +297,7 @@ ConsoleLoggerTrait::tearDown
 **Resets the Logger type**
 
 
-Will reset the :ref:`bhenk\logger\build\ConsoleLoggerCreator` to its original :ref:`LoggerType <bhenk\logger\build\LoggerTypes>`.
+Will reset the :ref:`bhenk\logger\log\Log` to its original :ref:`LoggerType <bhenk\logger\build\LoggerTypes>`.
 Calls :tech:`parent::tearDown()` after this.
 
 
@@ -310,4 +311,4 @@ Calls :tech:`parent::tearDown()` after this.
 
 ----
 
-:block:`Thu, 30 Mar 2023 20:36:52 +0000` 
+:block:`Fri, 31 Mar 2023 09:31:35 +0000` 

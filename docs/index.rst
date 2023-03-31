@@ -11,9 +11,7 @@ bhenk/logger
    :caption: Contents:
 
    rst/about
-   rst/install
-   rst/configuration
-   rst/logging
+   rst/usage
    api/api-docs
 
 Indices and tables
