@@ -171,6 +171,7 @@ class LoggerFactory {
                 }
             }
         }
+        self::$config_file = false;
     }
 
     private static function loadDefinitions(): void {
