@@ -3,7 +3,7 @@
 # logger-d
 Logging facility.
 
-Logger is written in PHP. \
+Logger is written in PHP \
 Requirement: php >=8.1 \
 Documentation: http://bhenklogger.readthedocs.io/
 

@@ -16,4 +16,4 @@ Source code: https://github.com/bhenk/logger-d
 
 | Copyright |copy| 2023 by henk van den berg
 | License: `Apache 2.0 <https://github.com/bhenk/doc2rst/blob/main/LICENSE>`_
-| Version: 1.0.0
+| Version: 1.0.1
