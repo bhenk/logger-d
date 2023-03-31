@@ -1,8 +1,11 @@
+[![Documentation Status](https://readthedocs.org/projects/bhenklogger/badge/?version=latest)](https://bhenklogger.readthedocs.io/en/latest/?badge=latest)
+
 # logger-d
 Logging facility.
 
 Logger is written in PHP. \
-Requirement: php >=8.1 
+Requirement: php >=8.1 \
+Documentation: http://bhenklogger.readthedocs.io/
 
 ## Logging
 Logger enables invoking log statements with static methods:
