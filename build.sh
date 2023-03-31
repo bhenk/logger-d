@@ -49,9 +49,6 @@ fi
 phpunit --bootstrap unit/bootstrap.php unit
 checkSuccess $? "phpunit: PHPUnit tests              "
 
-#php --define phar.readonly=0 create-phar.php
-#checkSuccess $? "create-phar: build doc2rst.phar     "
-
 ./doc2rst.phar -q docs
 checkSuccess $? "doc2rst: install configuration files"
 
