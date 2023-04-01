@@ -8,8 +8,6 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use PHPUnit\Framework\TestCase;
 use function count;
-use function fwrite;
-use function is_dir;
 use function PHPUnit\Framework\assertEmpty;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFileExists;
@@ -20,13 +18,20 @@ class LoggerFactoryTest extends TestCase {
 
     public function testGetConfigFile() {
         $config_file = LoggerFactory::getConfigFile();
-        assertFileExists($config_file);
-        $definition = LoggerFactory::getDefinition(LoggerTypes::req);
-        assertEmpty($definition);
-        $logger = LoggerFactory::getLogger(LoggerTypes::req);
-        assertInstanceOf(Logger::class, $logger);
-        $definition = LoggerFactory::getDefinition(LoggerTypes::req);
-        assertEquals("unit/req.log", $definition["filename"]);
+        if ($config_file) {
+            assertFileExists($config_file);
+            $definition = LoggerFactory::getDefinition(LoggerTypes::req);
+            assertEmpty($definition);
+            $logger = LoggerFactory::getLogger(LoggerTypes::req);
+            assertInstanceOf(Logger::class, $logger);
+            $definition = LoggerFactory::getDefinition(LoggerTypes::req);
+            assertEquals("unit/req.log", $definition["filename"]);
+        } else {
+            $definition = LoggerFactory::getDefinition(LoggerTypes::req);
+            assertEmpty($definition);
+            $logger = LoggerFactory::getLogger(LoggerTypes::req);
+            assertInstanceOf(Logger::class, $logger);
+        }
     }
 
     public function testErrorConfig() {

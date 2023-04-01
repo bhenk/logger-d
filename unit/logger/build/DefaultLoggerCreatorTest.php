@@ -5,7 +5,6 @@ namespace logger\build;
 use bhenk\logger\build\DefaultLoggerCreator;
 use Exception;
 use PHPUnit\Framework\TestCase;
-use function dl;
 use function PHPUnit\Framework\assertEquals;
 
 class DefaultLoggerCreatorTest extends TestCase {

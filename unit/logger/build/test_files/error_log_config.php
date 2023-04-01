@@ -1,8 +1,10 @@
 <?php
 
+use Monolog\Level;
+
 return [
     "req" => [
-        "level" => \Monolog\Level::Info,
+        "level" => Level::Info,
         "filename_format" => "foo"
     ]
 ];
