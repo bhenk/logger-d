@@ -1,4 +1,5 @@
 [![Documentation Status](https://readthedocs.org/projects/bhenklogger/badge/?version=latest)](https://bhenklogger.readthedocs.io/en/latest/?badge=latest)
+<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/bhenk/logger-d">
 
 # logger-d
 Logging facility.

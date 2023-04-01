@@ -167,8 +167,8 @@ class LoggerFactory {
                     self::$config_file = $config_file;
                 } else {
                     self::$config_file = false;
-                    return;
                 }
+                return;
             }
         }
         self::$config_file = false;

@@ -9,6 +9,7 @@ use Monolog\Logger;
 use PHPUnit\Framework\TestCase;
 use function count;
 use function fwrite;
+use function is_dir;
 use function PHPUnit\Framework\assertEmpty;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFileExists;
