@@ -109,6 +109,27 @@ The setting of the level parameter of :ref:`bhenk\logger\unit\LogAttribute` on i
 methods has precedence over that set
 on class level.
 
+If you override one of the
+`PHPUnit fixtures <https://docs.phpunit.de/en/10.0/fixtures.html#fixtures>`_ make sure to call the
+corresponding trait-method:
+
+.. code-block::
+   :emphasize-lines: 4, 10
+
+   #[LogAttribute(true)]
+   class ResourceTest extends TestCase {
+       use ConsoleLoggerTrait {
+           setUp as public traitSetUp;
+       }
+
+       private Resource $resource;
+
+       public function setUp(): void {
+           $this->traitSetUp();
+           $this->resource = new Resource();
+       }
+
+
 This trait calls on :ref:`bhenk\logger\log\Log` to set the type of logger temporarily to
 :ref:`bhenk\logger\build\LoggerTypes::clt`.
 Skies look bright if the logger of this type has the handler :ref:`bhenk\logger\handle\ConsoleHandler`.
@@ -124,46 +145,6 @@ Otherwise, a RuntimeException will be thrown with the message that you messed up
 
 
 .. contents::
-
-
-----
-
-
-.. _bhenk\logger\unit\ConsoleLoggerTrait::Constants:
-
-Constants
-+++++++++
-
-
-.. _bhenk\logger\unit\ConsoleLoggerTrait::CONSOLE_LOGGER:
-
-ConsoleLoggerTrait::CONSOLE_LOGGER
-----------------------------------
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ====== 
-   predicates public 
-   ========== ====== 
-
-
-
-
-**The logger type used**
-
-
-Logger types are obtained from :ref:`bhenk\logger\build\LoggerFactory`. In this case the Logger obtained is equipped
-with a :ref:`bhenk\logger\handle\ConsoleHandler`.
-
-
-
-.. code-block:: php
-
-   enum(bhenk\logger\build\LoggerTypes::clt) 
-
-
 
 
 ----
@@ -263,7 +244,7 @@ ConsoleLoggerTrait::setUp
 
 
 If :ref:`bhenk\logger\unit\LogAttribute` on method level is absent or enabled, will print the name of the method to console.
-Sets the :ref:`bhenk\logger\unit\ConsoleLoggerTrait::CONSOLE_LOGGER` as type on :ref:`bhenk\logger\log\Log`.
+Sets the :ref:`bhenk\logger\build\LoggerTypes::clt` as type on :ref:`bhenk\logger\log\Log`.
 Will call on :tech:`parent::setUp()` after this.
 
 
@@ -311,4 +292,4 @@ Calls :tech:`parent::tearDown()` after this.
 
 ----
 
-:block:`Sat, 01 Apr 2023 12:44:22 +0000` 
+:block:`Fri, 07 Apr 2023 09:20:05 +0000` 
