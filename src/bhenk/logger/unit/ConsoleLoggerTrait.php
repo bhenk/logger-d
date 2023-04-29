@@ -184,9 +184,9 @@ trait ConsoleLoggerTrait {
      */
     public function setUp(): void {
         if (self::$class_on) {
-            if (method_exists(TestCase::class, "name")) {
+            if (method_exists(PHPUnit\Framework\TestCase::class, "name")) {
                 $methodName = parent::name();
-            } elseif (method_exists(TestCase::class, "getName")) {
+            } elseif (method_exists(PHPUnit\Framework\TestCase::class, "getName")) {
                 $methodName = parent::getName();
             } else {
                 $methodName = $this->name();
