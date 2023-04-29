@@ -4,6 +4,7 @@ namespace logger\build;
 
 use bhenk\logger\build\LoggerFactory;
 use bhenk\logger\build\LoggerTypes;
+use bhenk\logger\log\Log;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use PHPUnit\Framework\TestCase;
@@ -26,6 +27,7 @@ class LoggerFactoryTest extends TestCase {
             assertInstanceOf(Logger::class, $logger);
             $definition = LoggerFactory::getDefinition(LoggerTypes::req);
             assertEquals("unit/req.log", $definition["filename"]);
+            Log::info("This log statement made according to config file");
         } else {
             $definition = LoggerFactory::getDefinition(LoggerTypes::req);
             assertEmpty($definition);

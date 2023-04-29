@@ -6,6 +6,7 @@ use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Level;
 use Monolog\Logger;
+use Monolog\Processor\IntrospectionProcessor;
 
 /**
  * Class capable of creating a default logger.
@@ -35,6 +36,10 @@ class DefaultLoggerCreator extends AbstractLoggerCreator {
      * Date format in log entries
      */
     const DATE_FORMAT = "Y-m-d H:i:s";
+    /**
+     * Add an IntrospectionProcessor
+     */
+    const INTROSPECTION_PROCESSOR = true;
     /**
      * Default error filename
      */
@@ -67,7 +72,8 @@ class DefaultLoggerCreator extends AbstractLoggerCreator {
      *    "err_max_files" => {int},
      *    "err_level" => Level|LogLevel|string|int,
      *    "format" => "{string}",
-     *    "date_format" => "{string}"
+     *    "date_format" => "{string}",
+     *    "introspection" => {bool},
      * ]
      * ```
      *
@@ -83,9 +89,12 @@ class DefaultLoggerCreator extends AbstractLoggerCreator {
         $log_handler = new RotatingFileHandler($log_file, $log_max_files, $log_level);
         $format = $paras["format"] ?? self::FORMAT;
         $date_format = $paras["date_format"] ?? self::DATE_FORMAT;
+        $introspection = $paras["introspection"] ?? self::INTROSPECTION_PROCESSOR;
         $formatter = new LineFormatter($format, $date_format,
             true, true, false);
         $log_handler->setFormatter($formatter);
+        if ($introspection)
+            $log_handler->pushProcessor(new IntrospectionProcessor(Level::Debug, [], 1));
         $logger->pushHandler($log_handler);
 
         $err_file = $this->makeAbsolute($paras["err_file"] ?? self::ERR_FILENAME);
@@ -95,6 +104,8 @@ class DefaultLoggerCreator extends AbstractLoggerCreator {
         $formatter = new LineFormatter($format, $date_format,
             true, true, true);
         $err_handler->setFormatter($formatter);
+        if ($introspection)
+            $err_handler->pushProcessor(new IntrospectionProcessor(Level::Debug, [], 1));
         $logger->pushHandler($err_handler);
         return $logger;
     }

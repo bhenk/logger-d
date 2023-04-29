@@ -47,6 +47,7 @@ use function is_file;
  *         "err_level" => \Psr\Log\LogLevel::ERROR,
  *         "format" => "%level_name% | %datetime% | %message% | %context% %extra%\n",
  *         "date_format" => "Y-m-d H:i:s",
+ *         "introspection" => true,
  *     ],
  *     "clt" => [
  *         "channel" => "clt",
