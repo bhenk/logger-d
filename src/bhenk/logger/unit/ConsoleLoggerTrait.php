@@ -9,7 +9,6 @@ use bhenk\logger\handle\ColorSchemeInterface;
 use bhenk\logger\handle\ConsoleHandler;
 use bhenk\logger\log\Log;
 use Monolog\Level;
-use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionException;
 use RuntimeException;
