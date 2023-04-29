@@ -13,7 +13,6 @@ use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionException;
 use RuntimeException;
-use Symfony\Component\Console\Logger\ConsoleLogger;
 use function fwrite;
 use function method_exists;
 use function str_pad;

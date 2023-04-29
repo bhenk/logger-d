@@ -226,6 +226,36 @@ DefaultLoggerCreator::DATE_FORMAT
 ----
 
 
+.. _bhenk\logger\build\DefaultLoggerCreator::INTROSPECTION_PROCESSOR:
+
+DefaultLoggerCreator::INTROSPECTION_PROCESSOR
+---------------------------------------------
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ====== 
+   predicates public 
+   ========== ====== 
+
+
+
+
+**Add an IntrospectionProcessor**
+
+
+
+.. code-block:: php
+
+   bool(true) 
+
+
+
+
+----
+
+
 .. _bhenk\logger\build\DefaultLoggerCreator::ERR_FILENAME:
 
 DefaultLoggerCreator::ERR_FILENAME
@@ -416,7 +446,8 @@ Optional :tagsign:`param` :tech:`$paras` have the format
       "err_max_files" => {int},
       "err_level" => Level|LogLevel|string|int,
       "format" => "{string}",
-      "date_format" => "{string}"
+      "date_format" => "{string}",
+      "introspection" => {bool},
    ]
 
 
@@ -493,4 +524,4 @@ A :tagsign:`param` :tech:`$filename` is invalid if it is the empty string ("") o
 
 ----
 
-:block:`Fri, 07 Apr 2023 09:20:05 +0000` 
+:block:`Sat, 29 Apr 2023 12:27:03 +0000` 
